@@ -1,5 +1,5 @@
 {
-  "name": "mern-shopping",
+  "name": "mern-server",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
@@ -22,7 +22,6 @@
     "graphql-tag": "^2.12.4",
     "heroku": "^7.59.0",
     "if-env": "^1.0.4",
-    "node": "^16.6.1",
     "react-apollo": "^3.1.5"
   },
   "devDependencies": {
