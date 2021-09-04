@@ -149,10 +149,8 @@ db.once('open', async () => {
     password: 'password12345'
   });
 
+
   console.log('users seeded');
 
   process.exit();
 });
-
-
-module.exports = seeds.js;

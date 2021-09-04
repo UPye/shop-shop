@@ -16,6 +16,17 @@ export const QUERY_PRODUCTS = gql`
   }
 `;
 
+<<<<<<< HEAD
+=======
+export const QUERY_CHECKOUT = gql`
+  query getCheckout($products: [ID]!) {
+    checkout(products: $products) {
+      session
+    }
+  }
+`;
+
+>>>>>>> e5b4bd7d951ccb86abd9dadcfb5b00d11a41d802
 export const QUERY_ALL_PRODUCTS = gql`
   {
     products {

@@ -19,6 +19,10 @@ server.applyMiddleware({ app });
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e5b4bd7d951ccb86abd9dadcfb5b00d11a41d802
 // Serve up static assets
 app.use('/images', express.static(path.join(__dirname, '../client/images')));
 
@@ -30,6 +34,10 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e5b4bd7d951ccb86abd9dadcfb5b00d11a41d802
 db.once('open', () => {
   app.listen(PORT, () => {
     console.log(`API server running on port ${PORT}!`);

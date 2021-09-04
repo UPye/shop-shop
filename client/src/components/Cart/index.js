@@ -1,14 +1,31 @@
 import React, { useEffect} from 'react';
+<<<<<<< HEAD
+=======
+import { useLazyQuery } from '@apollo/react-hooks';
+>>>>>>> e5b4bd7d951ccb86abd9dadcfb5b00d11a41d802
 import CartItem from '../CartItem';
 import Auth from '../../utils/auth';
 import { useStoreContext } from '../../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 import { idbPromise } from '../../utils/helpers';
+<<<<<<< HEAD
 import './style.css';
 
 
 const Cart = () => {
     const [state, dispatch] = useStoreContext();
+=======
+import { QUERY_CHECKOUT } from '../../utils/queries';
+import { loadStripe } from '@stripe/stripe-js';
+import './style.css';
+
+const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+
+
+const Cart = () => {
+    const [state, dispatch] = useStoreContext();
+    const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
+>>>>>>> e5b4bd7d951ccb86abd9dadcfb5b00d11a41d802
 
     useEffect(() => {
         async function getCart() {
@@ -23,6 +40,17 @@ const Cart = () => {
         }
     }, [state.cart.length, dispatch]);
 
+<<<<<<< HEAD
+=======
+    useEffect(() => {
+        if (data) {
+            stripePromise.then((res) => {
+                res.redirectToCheckout({ sessionId: data.checkout.session });
+            });
+        }
+    }, [data]);
+
+>>>>>>> e5b4bd7d951ccb86abd9dadcfb5b00d11a41d802
     function toggleCart() {
         dispatch({ type: TOGGLE_CART });
     }
@@ -35,6 +63,23 @@ const Cart = () => {
         return sum.toFixed(2);
     }
 
+<<<<<<< HEAD
+=======
+    function submitCheckout() {
+        const productIds = [];
+
+        state.cart.forEach((item) => {
+            for (let i = 0; i < item.purchaseQuantity; i++) {
+                productIds.push(item._id);
+            }
+        });
+
+        getCheckout({
+            variables: { products: productIds }
+        });
+    }
+
+>>>>>>> e5b4bd7d951ccb86abd9dadcfb5b00d11a41d802
     if (!state.cartOpen) {
         return (
             <div className="cart-closed" onClick={toggleCart}>
@@ -60,7 +105,11 @@ const Cart = () => {
                         <strong>Total: ${calculateTotal()}</strong>
                         {
                             Auth.loggedIn() ?
+<<<<<<< HEAD
                                 <button>
+=======
+                                <button onClick={submitCheckout}>
+>>>>>>> e5b4bd7d951ccb86abd9dadcfb5b00d11a41d802
                                     Checkout
                                 </button>
                                 :
